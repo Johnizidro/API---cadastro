@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cadastro de Produto</title>
     <style>
         body {
@@ -14,29 +14,24 @@
             margin: 0;
             background-color: #f4f4f9;
         }
-
         .form-container {
             background-color: white;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             width: 300px;
         }
-
         .form-container h2 {
             text-align: center;
             margin-bottom: 20px;
         }
-
         .form-group {
             margin-bottom: 15px;
         }
-
         label {
             display: block;
             margin-bottom: 5px;
         }
-
         input, button {
             width: 100%;
             padding: 10px;
@@ -44,20 +39,24 @@
             border-radius: 4px;
             border: 1px solid #ccc;
         }
-
         button {
             background-color: #4CAF50;
             color: white;
             cursor: pointer;
         }
-
         button:hover {
             background-color: #45a049;
         }
-
         .message {
             text-align: center;
             margin-top: 10px;
+        }
+        .btn-secondary {
+            background-color: #2196F3;
+            margin-top: 10px;
+        }
+        .btn-secondary:hover {
+            background-color: #0b7dda;
         }
     </style>
 </head>
@@ -67,15 +66,15 @@
         <form id="productForm">
             <div class="form-group">
                 <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
+                <input type="text" id="nome" name="nome" required />
             </div>
             <div class="form-group">
                 <label for="preco">Preço:</label>
-                <input type="number" id="preco" name="preco" step="0.01" required>
+                <input type="number" id="preco" name="preco" step="0.01" required />
             </div>
             <div class="form-group">
                 <label for="descricao">Descrição:</label>
-                <input type="text" id="descricao" name="descricao" required>
+                <input type="text" id="descricao" name="descricao" required />
             </div>
             <div class="form-group">
                 <label for="emEstoque">Em Estoque:</label>
@@ -86,23 +85,23 @@
             </div>
             <button type="submit">Cadastrar</button>
         </form>
+        <button class="btn-secondary" id="btnListar">Ver Produtos Cadastrados</button>
         <div id="message" class="message"></div>
     </div>
 
     <script>
         const form = document.getElementById('productForm');
         const messageDiv = document.getElementById('message');
+        const btnListar = document.getElementById('btnListar');
 
-        form.addEventListener('submit', async function (event) {
+        form.addEventListener('submit', async function(event) {
             event.preventDefault();
 
-            // Coletando os dados do formulário
             const nome = document.getElementById('nome').value;
             const preco = document.getElementById('preco').value;
             const descricao = document.getElementById('descricao').value;
             const emEstoque = document.getElementById('emEstoque').value === 'true';
 
-            // Preparando o corpo da requisição
             const produto = {
                 nome,
                 preco: parseFloat(preco),
@@ -111,21 +110,16 @@
             };
 
             try {
-                // Enviando a requisição POST para a API
-                const response = await fetch('http://localhost:4000/api/cadastro', {
+                const response = await fetch('http://localhost:4000/produtos/cadastro', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(produto)
                 });
 
-                // Processando a resposta da API
                 if (response.ok) {
-                    const data = await response.json();
                     messageDiv.textContent = 'Produto cadastrado com sucesso!';
                     messageDiv.style.color = 'green';
-                    form.reset(); // Limpar o formulário
+                    form.reset();
                 } else {
                     const error = await response.json();
                     messageDiv.textContent = `Erro: ${error.message}`;
@@ -135,6 +129,10 @@
                 messageDiv.textContent = 'Erro ao enviar os dados para a API!';
                 messageDiv.style.color = 'red';
             }
+        });
+
+        btnListar.addEventListener('click', () => {
+            window.location.href = 'listaPod.html'; // Ajuste o nome se for diferente
         });
     </script>
 </body>

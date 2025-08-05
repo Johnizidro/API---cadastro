@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 
-app.use("/api", produtoRoutes);
+app.use("/produtos", produtoRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
