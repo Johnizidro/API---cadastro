@@ -1,82 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Editar Produto</title>
-  <style>
-    /* Mesma estilização da página de cadastro */
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f4f4f9;
-    }
-
-    .form-container {
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 300px;
-    }
-
-    .form-container h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    input, select, button {
-      width: 100%;
-      padding: 10px;
-      margin: 5px 0;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      background-color: #2196F3;
-      color: white;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #1976D2;
-    }
-
-    .message {
-      text-align: center;
-      margin-top: 10px;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VogueEdge - Editar Produto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/editar.css" />
 </head>
 <body>
   <div class="form-container">
     <h2>Editar Produto</h2>
-    <form id="editForm">
+    
+    <form id="editForm" enctype="multipart/form-data">
       <div class="form-group">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
+        <input type="text" id="nome" name="nome" required />
       </div>
+
       <div class="form-group">
         <label for="preco">Preço:</label>
-        <input type="number" id="preco" name="preco" step="0.01" required>
+        <input type="number" id="preco" name="preco" step="0.01" required />
       </div>
+
       <div class="form-group">
         <label for="descricao">Descrição:</label>
-        <input type="text" id="descricao" name="descricao" required>
+        <input type="text" id="descricao" name="descricao" required />
       </div>
+
       <div class="form-group">
         <label for="emEstoque">Em Estoque:</label>
         <select id="emEstoque" name="emEstoque" required>
@@ -84,8 +34,15 @@
           <option value="false">Não</option>
         </select>
       </div>
+
+      <div class="form-group">
+        <label for="imagem">Imagem (opcional):</label>
+        <input type="file" id="imagem" name="imagem" accept="image/*" />
+      </div>
+
       <button type="submit">Salvar Alterações</button>
     </form>
+
     <div id="message" class="message"></div>
   </div>
 
@@ -94,66 +51,62 @@
     const messageDiv = document.getElementById('message');
     const urlParams = new URLSearchParams(window.location.search);
     const produtoId = urlParams.get('id');
-  
-    console.log('Produto ID:', produtoId); // Só para garantir que o ID está vindo
-  
+
     async function carregarProduto() {
       try {
         const res = await fetch(`http://localhost:4000/produtos/consulta/${produtoId}`);
-  
-        if (!res.ok) {
-          throw new Error('Produto não encontrado');
-        }
-  
+        if (!res.ok) throw new Error('Produto não encontrado');
+
         const produto = await res.json();
-  
+
         form.nome.value = produto.nome;
         form.preco.value = produto.preco;
         form.descricao.value = produto.descricao;
         form.emEstoque.value = produto.emEstoque.toString();
       } catch (error) {
         messageDiv.textContent = error.message;
-        messageDiv.style.color = 'red';
+        messageDiv.style.color = '#e74c3c';
       }
     }
-  
+
     form.addEventListener('submit', async function (event) {
       event.preventDefault();
-  
-      const produtoAtualizado = {
-        nome: form.nome.value,
-        preco: parseFloat(form.preco.value),
-        descricao: form.descricao.value,
-        emEstoque: form.emEstoque.value === 'true'
-      };
-  
+
+      const formData = new FormData();
+      formData.append("nome", form.nome.value);
+      formData.append("preco", form.preco.value);
+      formData.append("descricao", form.descricao.value);
+      formData.append("emEstoque", form.emEstoque.value);
+
+      const imagemFile = form.imagem.files[0];
+      if (imagemFile) {
+        formData.append("imagem", imagemFile);
+      }
+
       try {
         const response = await fetch(`http://localhost:4000/produtos/atualizar/${produtoId}`, {
           method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(produtoAtualizado)
+          body: formData
         });
-  
+
         if (response.ok) {
           messageDiv.textContent = 'Produto atualizado com sucesso!';
-          messageDiv.style.color = 'green';
-  
+          messageDiv.style.color = '#4CAF50';
+
           setTimeout(() => {
-            window.location.href = 'listaPod.html'; // redireciona para a lista
+            window.location.href = 'listaPod.html';
           }, 1000);
         } else {
           const erro = await response.json();
           messageDiv.textContent = `Erro: ${erro.erro || erro.message || 'Erro desconhecido'}`;
-          messageDiv.style.color = 'red';
+          messageDiv.style.color = '#e74c3c';
         }
       } catch (error) {
         messageDiv.textContent = 'Erro na comunicação com o servidor!';
-        messageDiv.style.color = 'red';
+        messageDiv.style.color = '#e74c3c';
       }
     });
-  
+
     carregarProduto();
   </script>
 </body>

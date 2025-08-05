@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/site.css" />
+    <title>VogueEdge - Cadastro de Produto</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>VogueEdge</h2>
+      <form id="productForm" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required />
+        </div>
+        <div class="form-group">
+          <label for="preco">Preço:</label>
+          <input type="number" id="preco" name="preco" step="0.01" required />
+        </div>
+        <div class="form-group">
+          <label for="imagem">Imagem do Produto:</label>
+          <input type="file" id="imagem" name="imagem" accept="image/*" />
+        </div>
+        <div class="form-group">
+          <label for="descricao">Descrição:</label>
+          <input type="text" id="descricao" name="descricao" required />
+        </div>
+        <div class="form-group">
+          <label for="emEstoque">Em Estoque:</label>
+          <select id="emEstoque" name="emEstoque" required>
+            <option value="true">Sim</option>
+            <option value="false">Não</option>
+          </select>
+        </div>
+        <button type="submit">Cadastrar</button>
+      </form>
+      <button class="btn-secondary" id="btnListar">
+        Ver Produtos Cadastrados
+      </button>
+      <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById("productForm");
+        const messageDiv = document.getElementById("message");
+        const btnListar = document.getElementById("btnListar");
+      
+        form.addEventListener("submit", async function (event) {
+          event.preventDefault();
+      
+          const formData = new FormData();
+      
+          formData.append("nome", document.getElementById("nome").value);
+          formData.append(
+            "preco",
+            parseFloat(document.getElementById("preco").value)
+          );
+          formData.append(
+            "descricao",
+            document.getElementById("descricao").value
+          );
+          formData.append(
+            "emEstoque",
+            document.getElementById("emEstoque").value === "true"
+          );
+      
+          const imagemInput = document.getElementById("imagem");
+          if (imagemInput.files.length > 0) {
+            formData.append("imagem", imagemInput.files[0]);
+          }
+      
+          try {
+            const response = await fetch(
+              "http://localhost:4000/produtos/cadastro",
+              {
+                method: "POST",
+                body: formData, // importante: não definir 'Content-Type' aqui
+              }
+            );
+      
+            if (response.ok) {
+              messageDiv.textContent = "Produto cadastrado com sucesso!";
+              messageDiv.style.color = "#4CAF50";
+              form.reset();
+            } else {
+              const error = await response.json();
+              messageDiv.textContent = `Erro: ${error.message}`;
+              messageDiv.style.color = "#e74c3c";
+            }
+          } catch (error) {
+            messageDiv.textContent = "Erro ao enviar os dados para a API!";
+            messageDiv.style.color = "#e74c3c";
+          }
+        });
+      
+        btnListar.addEventListener("click", () => {
+          window.location.href = "listaPod.html";
+        });
+      </script>
+  </body>
+</html>

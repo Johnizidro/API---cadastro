@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  background: #121212;
+  color: #eee;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0 15px;
+}
+
+.form-container {
+  background: #1f1f1f;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+  width: 350px;
+  text-align: center;
+  border: 1px solid #333;
+}
+
+.form-container h2 {
+  font-weight: 600;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+  color: #f5a623; /* dourado fashion */
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+}
+
+.form-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+input, select {
+  width: 90%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #444;
+  background: #2a2a2a;
+  color: #eee;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #f5a623;
+  background: #333;
+}
+
+button {
+  width: 100%;
+  padding: 14px 0;
+  margin-top: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #f5a623;
+  color: #121212;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+button:hover {
+  background: #d18e12;
+}
+
+.message {
+  margin-top: 16px;
+  font-weight: 600;
+  font-size: 1rem;
+  min-height: 1.2rem;
+  letter-spacing: 0.5px;
+}
