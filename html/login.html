@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/css/site.css" />
+  <title>Login</title>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Login</h2>
+    <form id="formLogin">
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required />
+      </div>
+      <button type="submit">Entrar</button>
+    </form>
+    <div id="messageLogin" class="message"></div>
+  </div>
+
+  <script>
+    document.getElementById("formLogin").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const senha = document.getElementById("senha").value;
+  
+      try {
+        const res = await fetch("http://localhost:4000/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, senha }),
+        });
+  
+        const dados = await res.json();
+  
+        if (res.ok) {
+          alert(dados.msg);
+          // Salvar token no localStorage para usar depois
+          localStorage.setItem("token", dados.token);
+          window.location.href = "site.html";
+          // Redirecionar para página protegida (exemplo)
+          // window.location.href = "/dashboard.html";
+        } else {
+          alert("Erro: " + dados.msg);
+        }
+      } catch (err) {
+        alert("Erro ao conectar com o servidor.");
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
