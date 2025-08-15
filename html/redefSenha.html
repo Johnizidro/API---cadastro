@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Redefinir Senha</title>
+   <link rel="stylesheet" href="/css/site.css" /> <!-- mesmo CSS -->
+</head>
+<body>
+  <div class="form-container">
+    <h2>Redefinir Senha</h2>
+    <form id="form-resetar">
+      <div class="form-group">
+        <label for="senha">Nova senha:</label>
+        <input type="password" id="senha" required />
+      </div>
+      <button type="submit">Alterar senha</button>
+    </form>
+    <div id="mensagem" class="message"></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token");
+
+    document.getElementById("form-resetar").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const novaSenha = document.getElementById("senha").value;
+      const res = await fetch(`http://localhost:4000/api/resetar-senha/${token}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ novaSenha })
+      });
+      const data = await res.json();
+      const mensagemEl = document.getElementById("mensagem");
+      mensagemEl.innerText = data.msg || "Erro ao redefinir senha.";
+
+      if (res.ok) {
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 2000);
+      }
+    });
+  </script>
+</body>
+</html>

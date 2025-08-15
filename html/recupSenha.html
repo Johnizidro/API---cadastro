@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Recuperar Senha</title>
+   <link rel="stylesheet" href="/css/site.css" /> <!-- link para o CSS que você já tem -->
+</head>
+<body>
+ <body>
+  <div class="form-container">
+    <h2>Recuperar Senha</h2>
+    <form id="form-esqueci">
+      <div class="form-group">
+        <label for="email">Digite seu e-mail:</label>
+        <input type="email" id="email" required />
+      </div>
+      <button type="submit">Enviar link de recuperação</button>
+    </form>
+    <p style="font-size: 0.9em; margin-top: 10px;">
+      Lembrou sua senha? <a href="login.html">Faça login</a>
+    </p>
+
+    <!-- Mensagem de sucesso/erro -->
+    <div id="mensagem" class="message"></div>
+
+    <!-- Loading enquanto envia o e-mail -->
+    <div id="loading" style="display:none; margin-top:10px; font-size:0.9rem; color:#f5a623;">
+      Enviando e-mail...
+    </div>
+  </div>
+  <script>
+document.getElementById("form-esqueci").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const emailInput = document.getElementById("email");
+  const email = emailInput.value;
+  const mensagemEl = document.getElementById("mensagem");
+  const loadingEl = document.getElementById("loading");
+
+  // Mostra loading
+  loadingEl.style.display = "block";
+  mensagemEl.innerText = ""; // limpa mensagens anteriores
+
+  try {
+    const res = await fetch("http://localhost:4000/api/esqueci-senha", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email })
+    });
+
+    const data = await res.json();
+
+    // Esconde loading
+    loadingEl.style.display = "none";
+
+    if (res.ok) {
+      emailInput.value = ""; // limpa o campo
+      mensagemEl.innerText = "E-mail enviado com sucesso! Verifique sua caixa de entrada.";
+      mensagemEl.style.color = "#f5a623";
+    } else {
+      mensagemEl.innerText = data.msg || "Erro ao solicitar recuperação.";
+      mensagemEl.style.color = "#ff4d4f";
+    }
+
+  } catch (err) {
+    loadingEl.style.display = "none";
+    mensagemEl.innerText = "Erro ao conectar com o servidor.";
+    mensagemEl.style.color = "#ff4d4f";
+    console.error(err);
+  }
+});
+</script>
+</body>
+</html>
