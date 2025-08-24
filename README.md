@@ -4,6 +4,10 @@
 
 Essa API tem como objetivo permitir o cadastro e gerenciamento de produtos. Ela oferece endpoints para criar, listar, atualizar e excluir produtos.
 
+<p align="center">
+  <img alt="License" src="capa_readme.png">
+</p>
+
 ## 🚀 Tecnologias Utilizadas
 
 - ⚙️ Node.js
