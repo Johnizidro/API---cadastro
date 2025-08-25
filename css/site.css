@@ -5,11 +5,47 @@ body {
     color: #eee;
     font-family: 'Poppins', sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    flex-direction: column; /* empilha header, conteúdo e footer */
+    min-height: 100vh;      /* ocupa no mínimo a altura da tela */
     margin: 0;
-    padding: 0 15px;
+    overflow-x: hidden;
+}
+
+/* Área principal ocupa o espaço do meio */
+main {
+  max-width: 900px;
+  margin: 100px auto 60px; /* dá espaço abaixo do header e antes do footer */
+  padding: 0 20px;
+  color: #eee;
+}
+
+main h2 {
+  text-align: center;
+  color: #f5a623;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+main p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #ddd;
+}
+
+main strong {
+  color: #f5a623;
+}
+
+/* Optional: um box com sombra e bordas arredondadas para destacar o texto */
+.content-box {
+  background: #1f1f1f;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(245, 166, 35, 0.15);
 }
 
 .form-container {
@@ -20,6 +56,7 @@ body {
     width: 350px;
     text-align: center;
     border: 1px solid #333;
+    margin-top: 5%;
 }
 
 .form-container h2 {
@@ -102,3 +139,134 @@ button:hover {
     min-height: 1.2rem;
     letter-spacing: 0.5px;
 }
+.header {
+    width: 100%;
+    padding: 0px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Faz o logo e os links ficarem em lados opostos */
+    background: #1A1A1A; /* Cor igual ao rodapé da imagem */
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 85%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 45px;
+    height: auto;
+    margin-right: 12px;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    color: #f5a623;
+    font-weight: 200;
+}
+
+.header-nav a {
+    color: #f5a623; /* Mesma cor do título */
+    text-decoration: none;
+    margin-left: 65px; /* Pequeno espaçamento entre os links */
+    font-weight: normal; /* Fonte normal */
+}
+
+
+  /* FOOTER */
+  .footer {
+    background: #0c0c0c;
+    color: #ddd;
+    padding-top: 20px;
+    margin-top: 35px;
+    width: 100%;
+  
+    padding-right: 5%;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 20px;
+    max-width: 85%;   /* limite de largura */
+    margin-left: auto;
+    margin-right: auto; /* centraliza */
+  }
+  .footer-left h3 {
+    font-size: 1.3rem;
+    color: #F9F9F9;
+    margin-bottom: 5px;
+  }
+  
+  .footer-left p {
+    margin: 0 0 12px;
+    color: #F9F9F9;
+    font-size: 1.3rem;
+  }
+  
+  /* Ícones com círculo branco */
+  .social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    margin-right: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .social-icons a img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .social-icons a:hover {
+    transform: scale(1.1);
+    opacity: 0.85;
+  }
+  
+  /* Direita → dois links em cima, um embaixo */
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .footer-right .top-titles {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .footer-right a {
+    color: #ddd;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-right a:hover {
+    color: #f5a623;
+  }
+  
+  /* Linha + texto */
+  .footer-bottom hr {
+    border: none;
+    border-top: 1px solid #333;
+    margin-bottom: 10px;
+  }
+  
+  .footer-bottom p {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+  }
+  

@@ -13,12 +13,40 @@ body {
 
 /* Área principal ocupa o espaço do meio */
 main {
-  flex: 1; /* ocupa todo o espaço disponível */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 15px;
-}
+    max-width: 900px;
+    margin: 100px auto 60px; /* dá espaço abaixo do header e antes do footer */
+    padding: 0 20px;
+    color: #eee;
+  }
+
+  main h2 {
+    text-align: center;
+    color: #f5a623;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  main p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #ddd;
+  }
+
+  main strong {
+    color: #f5a623;
+  }
+
+  /* Optional: um box com sombra e bordas arredondadas para destacar o texto */
+  .content-box {
+    background: #1f1f1f;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(245, 166, 35, 0.15);
+  }
 
 h2 {
   text-align: center;

@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #121212;
+  color: #eee;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Topo com logo menor e links */
+.top-right {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  text-align: center;
+}
+.login-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin: 0 15px;
+    max-width: 140px; /* limita largura para quebrar linha se precisar */
+  }
+  
+  .login-register .small-logo {
+    width: 60px;
+    height: auto;
+    margin-bottom: 0;
+  }
+  
+  .login-register p {
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.1;
+    text-align: center;
+    word-wrap: break-word;
+  }
+  
+  .login-register p a {
+    color: #f5a623;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0 3px;
+    white-space: normal; /* permite quebra de linha nos links */
+  }
+  
+  .login-register p a:hover {
+    text-decoration: none;
+  }
+  
+
+.mini-logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 10px;
+  filter: brightness(0) invert(1); /* deixa a logo branca */
+}
+
+
+/* Logo central grande */
+.main-entry {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  text-align: center;
+}
+
+.central-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Espaço entre imagem e texto */
+    justify-content: center;
+  }
+  
+  /* Logo grande à esquerda */
+  .main-logo {
+    width: 500px;
+    height: auto;
+    flex-shrink: 0; /* não encolhe */
+  }
+  
+  /* Texto do título grande à direita */
+  .main-title {
+    font-size: 10rem;
+    color: #f5a623;
+    letter-spacing: 2px;
+    flex: 1; /* ocupa o máximo de espaço possível */
+    text-align: left;
+  }
+
+
+  /* FOOTER */
+  .footer {
+    background: #0c0c0c;
+    color: #ddd;
+    padding-top: 20px;
+    margin-top: 35px;
+    width: 100%;
+    padding-bottom: 2%;
+    padding-right: 5%;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 20px;
+    max-width: 85%;   /* limite de largura */
+    margin-left: auto;
+    margin-right: auto; /* centraliza */
+  }
+  .footer-left h3 {
+    font-size: 1.3rem;
+    color: #F9F9F9;
+    margin-bottom: 5px;
+  }
+  
+  .footer-left p {
+    margin: 0 0 12px;
+    color: #F9F9F9;
+    font-size: 1.3rem;
+  }
+  
+  /* Ícones com círculo branco */
+  .social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    margin-right: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .social-icons a img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .social-icons a:hover {
+    transform: scale(1.1);
+    opacity: 0.85;
+  }
+  
+  /* Direita → dois links em cima, um embaixo */
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .footer-right .top-titles {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .footer-right a {
+    color: #ddd;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-right a:hover {
+    color: #f5a623;
+  }
+  
+  /* Linha + texto */
+  .footer-bottom hr {
+    border: none;
+    border-top: 1px solid #333;
+    margin-bottom: 10px;
+  }
+  
+  .footer-bottom p {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+  }
+  
