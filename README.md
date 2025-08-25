@@ -21,8 +21,8 @@ Essa API tem como objetivo permitir o cadastro e gerenciamento de produtos. Ela 
 - **Listagem de produtos** (GET)
 - **Atualização de produto** (PUT)
 - **Remoção de produto** (DELETE)
-- **Recuperação de Senha
-- **Envio de Imagens
+- **Recuperação de Senha**
+- **Envio de Imagens**
 
 ---
 
