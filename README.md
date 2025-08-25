@@ -72,7 +72,7 @@ Essa API tem como objetivo permitir o cadastro e gerenciamento de produtos. Ela 
 ## Protótipo no Figma
 
 <a href="https://www.figma.com/design/RdHnvFwy3UhE0OMfGVjUts/Estoque-Roupas?node-id=2070-55&t=1O0Y6OqUd9YOD1nG-1" target="_blank">
- <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" width="20" alt="Figma logo"/>
-  Abrir protótipo no Figma
+ <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" width="15" alt="Figma logo"/>
+  Veja o protótipo no Figma
 </a>
 
