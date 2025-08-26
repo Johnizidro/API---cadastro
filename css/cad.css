@@ -12,32 +12,11 @@ body {
 }
 
 /* Área principal ocupa o espaço do meio */
-.background-wrapper {
-  position: relative;
-  min-height: calc(100vh - 160px); /* ajusta para altura da tela menos header e footer */
-  padding-top: 100px;  /* dá espaço pro header */
-  padding-bottom: 60px; /* espaço para footer */
-}
-
-.background-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("/img/pexels-pixabay-325876\ 1.png") center/cover no-repeat;
-  opacity: 0.2; /* 20% de visibilidade */
-  z-index: 0;    /* atrás do conteúdo */
-}
-
 main {
-  position: relative;
-  z-index: 1; /* acima da imagem de fundo */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  max-width: 900px;
+  margin: 100px auto 60px; /* dá espaço abaixo do header e antes do footer */
   padding: 0 20px;
+  color: #eee;
 }
 
 main h2 {
@@ -70,17 +49,14 @@ main strong {
 }
 
 .form-container {
-  position: relative;
-  z-index: 1; /* fica acima do fundo */
-  background: rgba(31, 31, 31, 0.85); /* leve transparência */
-  padding: 30px 25px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  width: 350px;
-  text-align: center;
-  border: 1px solid #333;
-  margin-top: 6%;
-  margin-bottom: 6%;
+    background: #1f1f1f;
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+    width: 350px;
+    text-align: center;
+    border: 1px solid #333;
+    margin-top: 5%;
 }
 
 .form-container h2 {
@@ -164,14 +140,16 @@ button:hover {
     letter-spacing: 0.5px;
 }
 .header {
-    width: 100%;       /* cobre toda a tela */
-    padding: 0 7%;     /* mantém o espaçamento interno */
+    width: 100%;
+    padding: 0px 7%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background: #1A1A1A;
-    position: relative; /* ou fixed se quiser que fique sempre no topo */
-    z-index: 10;        /* garante que fique acima do fundo */
+    justify-content: space-between; /* Faz o logo e os links ficarem em lados opostos */
+    background: #1A1A1A; /* Cor igual ao rodapé da imagem */
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 85%;
 }
 
 .logo-container {
@@ -203,8 +181,8 @@ button:hover {
   .footer {
     background: #0c0c0c;
     color: #ddd;
-   
-   
+    padding-top: 20px;
+    margin-top: 35px;
     width: 100%;
   
     padding-right: 5%;
