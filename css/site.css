@@ -292,7 +292,7 @@ button:hover {
     color: #777;
   }
 
-  @media (min-width: 1980px) {
+  @media (min-width: 1900px) {
   body {
     font-size: 18px; /* ajuste opcional para telas muito grandes */
   }

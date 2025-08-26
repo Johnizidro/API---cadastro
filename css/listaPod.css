@@ -308,7 +308,7 @@ h2 {
 /* ============================= */
 /* 1980px e maiores (desktop full) */
 /* ============================= */
-@media (min-width: 1980px) {
+@media (min-width: 1900px) {
   body {
     font-size: 18px;
   }
@@ -332,6 +332,15 @@ h2 {
 
   .header-nav a {
     margin-left: 90px;
+  }
+  
+  .product-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* sempre 3 colunas */
+    gap: 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+    margin-bottom: 5%;
   }
 }
 

@@ -234,7 +234,7 @@ button:hover {
 /* ============================= */
 /* 1980px e maiores (desktop full) */
 /* ============================= */
-@media (min-width: 1980px) {
+@media (min-width: 1900px) {
   body {
     font-size: 18px;
   }
