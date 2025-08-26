@@ -100,17 +100,18 @@ button:hover {
 }
 
 .header {
-  width: 100%;
-  padding: 0px 7%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Faz o logo e os links ficarem em lados opostos */
-  background: #1A1A1A; /* Cor igual ao rodapé da imagem */
-  position: absolute;
-  top: 0;
-  left: 0;
-  max-width: 85%;
+    width: 100%;
+    padding: 0px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Faz o logo e os links ficarem em lados opostos */
+    background: #1A1A1A; /* Cor igual ao rodapé da imagem */
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 90%;
 }
+
 
 .logo-container {
   display: flex;
@@ -228,4 +229,108 @@ button:hover {
   text-align: center;
   font-size: 0.9rem;
   color: #777;
+}
+
+/* ============================= */
+/* 1980px e maiores (desktop full) */
+/* ============================= */
+@media (min-width: 1980px) {
+  body {
+    font-size: 18px;
+  }
+
+  main {
+    max-width: 1000px;
+    margin: 120px auto 80px;
+  }
+
+  main h2 {
+    font-size: 3rem;
+  }
+
+  .form-container {
+    width: 400px;
+    padding: 40px 35px;
+    margin-top: 6%;
+  }
+
+  .header-nav a {
+    margin-left: 90px;
+  }
+}
+
+/* ============================= */
+/* 1360px (desktop médio/laptop) */
+/* ============================= */
+@media (max-width: 1360px) {
+  main {
+    max-width: 800px;
+    margin: 100px auto 60px;
+    padding: 0 15px;
+  }
+
+  main h2 {
+    font-size: 2.2rem;
+  }
+
+  .form-container {
+    width: 350px;
+    padding: 30px 25px;
+  }
+
+  .header-nav a {
+    margin-left: 50px;
+  }
+}
+
+/* ============================= */
+/* Mobile (320px até 768px) */
+/* ============================= */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  main {
+    margin: 80px 10px 40px;
+    padding: 0 10px;
+  }
+
+  main h2 {
+    font-size: 1.8rem;
+  }
+
+  .form-container {
+    width: 90%;
+    padding: 20px;
+    margin-top: 10%;
+  }
+
+  .header {
+    flex-direction: column;
+    padding: 15px 5%;
+    max-width: 100%;
+    position: relative;
+  }
+
+  .header-nav {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-nav a {
+    margin: 8px 0;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-right .top-titles {
+    flex-direction: column;
+    gap: 15px;
+  }
 }

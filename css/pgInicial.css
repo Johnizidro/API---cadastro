@@ -74,6 +74,7 @@ body {
   align-items: center;
   padding-top: 100px;
   text-align: center;
+  padding-Bottom: 100px;
 }
 
 .central-logo-container {
@@ -85,14 +86,14 @@ body {
   
   /* Logo grande à esquerda */
   .main-logo {
-    width: 500px;
+    width: 400px;
     height: auto;
     flex-shrink: 0; /* não encolhe */
   }
   
   /* Texto do título grande à direita */
   .main-title {
-    font-size: 10rem;
+    font-size: 9rem;
     color: #f5a623;
     letter-spacing: 2px;
     flex: 1; /* ocupa o máximo de espaço possível */
@@ -193,3 +194,135 @@ body {
     color: #777;
   }
   
+  /* ============================= */
+/* 1980px e maiores (desktop full) */
+/* ============================= */
+@media (min-width: 1980px) {
+  body {
+    font-size: 18px;
+  }
+
+  .main-logo {
+    width: 600px;
+  }
+
+  .main-title {
+    font-size: 12rem;
+  }
+
+  .central-logo-container {
+    gap: 60px;
+  }
+
+  .top-right {
+    top: 30px;
+    right: 50px;
+  }
+
+  .login-register {
+    max-width: 160px;
+  }
+}
+
+/* ============================= */
+/* 1360px (desktop médio/laptop) */
+/* ============================= */
+@media (max-width: 1360px) {
+  body {
+    font-size: 17px;
+  }
+
+   .main-entry {
+    flex-direction: column;
+    padding-top: 60px;
+  }
+
+  .central-logo-container {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .main-logo {
+    width: 80%;
+    max-width: 450px;
+  }
+
+  .main-title {
+    font-size: 4.5rem;
+    text-align: center;
+  }
+
+  .top-right {
+    top: 25px;
+    right: 40px;
+  }
+
+  .login-register {
+    max-width: 140px;
+  }
+}
+
+/* ============================= */
+/* Mobile (320px até 768px) */
+/* ============================= */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  .main-entry {
+    flex-direction: column;
+    padding-top: 60px;
+  }
+
+  .central-logo-container {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .main-logo {
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .main-title {
+    font-size: 3.5rem;
+    text-align: center;
+  }
+
+  .top-right {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-bottom: 15px;
+  }
+
+  .login-register {
+    flex-direction: row;
+    gap: 10px;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .login-register .small-logo {
+    width: 40px;
+  }
+
+  .login-register p {
+    font-size: 0.8rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-right .top-titles {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

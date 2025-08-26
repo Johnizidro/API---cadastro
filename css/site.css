@@ -291,4 +291,96 @@ button:hover {
     font-size: 0.9rem;
     color: #777;
   }
+
+  @media (min-width: 1980px) {
+  body {
+    font-size: 18px; /* ajuste opcional para telas muito grandes */
+  }
+
+  .form-container {
+    width: 400px;
+    padding: 40px 35px;
+  }
+
+  main h2 {
+    font-size: 3rem;
+  }
+
+  .header-nav a {
+    margin-left: 80px;
+  }
+}
+
+/* ============================= */
+/* 1360px (desktop médio/laptop) */
+/* ============================= */
+@media (max-width: 1360px) {
+  .form-container {
+    width: 320px;
+    padding: 30px 25px;
+  }
+
+  main h2 {
+    font-size: 2.2rem;
+  }
+
+  .header-nav a {
+    margin-left: 45px;
+  }
+
+  .background-wrapper {
+    padding-top: 80px;
+    padding-bottom: 50px;
+  }
+}
+
+/* ============================= */
+/* Mobile (320px até 768px) */
+/* ============================= */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    padding: 15px 5%;
+  }
+
+  .header-nav {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-nav a {
+    margin: 8px 0;
+  }
+
+  .form-container {
+    width: 90%;
+    padding: 20px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+
+  main h2 {
+    font-size: 1.8rem;
+  }
+
+  .content-box {
+    padding: 20px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-right .top-titles {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
   

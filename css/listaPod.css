@@ -56,8 +56,8 @@ h2 {
 .product-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* sempre 3 colunas */
-  gap: 120px;
-  max-width: 1500px;
+  gap: 100px;
+  max-width: 1200px;
   margin: 0 auto;
   margin-bottom: 5%;
 }
@@ -154,7 +154,7 @@ h2 {
 
 .product-image img {
   width: 100% !important;
-  height: 350px !important;
+  height: 300px !important;
   object-fit: cover !important;
   object-position: center center !important;
 }
@@ -169,7 +169,7 @@ h2 {
   position: absolute;
   top: 0;
   left: 0;
-  max-width: 85%;
+  max-width: 90%;
 }
 
 .logo-container {
@@ -303,5 +303,129 @@ h2 {
   0% { opacity: 1; }
   50% { opacity: 0.4; }
   100% { opacity: 1; }
+}
+
+/* ============================= */
+/* 1980px e maiores (desktop full) */
+/* ============================= */
+@media (min-width: 1980px) {
+  body {
+    font-size: 18px;
+  }
+
+  main {
+    padding: 60px 40px;
+  }
+
+  .product-list {
+    gap: 150px;
+    max-width: 1600px;
+  }
+
+  .product-item {
+    height: 700px;
+  }
+
+  .product-title {
+    font-size: 3rem;
+  }
+
+  .header-nav a {
+    margin-left: 90px;
+  }
+}
+
+/* ============================= */
+/* 1360px (desktop médio/laptop) */
+/* ============================= */
+@media (max-width: 1360px) {
+  body {
+    font-size: 17px;
+  }
+
+  main {
+    padding: 50px 25px;
+  }
+
+  .product-list {
+    gap: 100px;
+    max-width: 1200px;
+  }
+
+  .product-item {
+    height: 650px;
+  }
+
+  .product-title {
+    font-size: 2.5rem;
+  }
+
+  .header-nav a {
+    margin-left: 50px;
+  }
+}
+
+/* ============================= */
+/* Mobile (320px até 768px) */
+/* ============================= */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  main {
+    flex-direction: column;
+    padding: 30px 10px;
+  }
+
+  .product-list {
+    grid-template-columns: 1fr; /* 1 coluna */
+    gap: 30px;
+    max-width: 95%;
+    margin: 0 auto 5%;
+  }
+
+  .product-item {
+    height: auto; /* altura automática para caber conteúdo */
+  }
+
+  .product-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .actions {
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .header {
+    flex-direction: column;
+    padding: 15px 5%;
+    max-width: 100%;
+    position: relative;
+    align-items: center;
+  }
+
+  .header-nav {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-nav a {
+    margin: 8px 0;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-right .top-titles {
+    flex-direction: column;
+    gap: 15px;
+  }
 }
 
