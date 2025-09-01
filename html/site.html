@@ -9,7 +9,7 @@
   <body>
     <header class="header">
       <div class="logo-container">
-        <img src="/img/layer-MC1.png" alt="Logo VogueEdge" class="logo">
+        <img src="/img/layer-MC1.png" alt="Logo VogueEdge" class="logo" />
         <h1 class="site-title">VogueEdge</h1>
       </div>
       <nav class="header-nav">
@@ -17,132 +17,149 @@
         <a href="/html/site.html">Cadastro</a>
         <a href="/html/listaPod.html">Produtos</a>
       </nav>
-    </header> 
+    </header>
     <main>
-    <div class="form-container">
-      <h2>VogueEdge</h2>
-      <form id="productForm" enctype="multipart/form-data">
-        <div class="form-group">
-          <label for="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" required />
-        </div>
-        <div class="form-group">
-          <label for="preco">Preço:</label>
-          <input type="number" id="preco" name="preco" step="0.01" required />
-        </div>
-        <div class="form-group">
-          <label for="imagem">Imagem do Produto:</label>
-          <input type="file" id="imagem" name="imagem" accept="image/*" />
-        </div>
-        <div class="form-group">
-          <label for="descricao">Descrição:</label>
-          <input type="text" id="descricao" name="descricao" required />
-        </div>
-        <div class="form-group">
-          <label for="emEstoque">Em Estoque:</label>
-          <select id="emEstoque" name="emEstoque" required>
-            <option value="true">Sim</option>
-            <option value="false">Não</option>
-          </select>
-        </div>
-        <button type="submit">Cadastrar</button>
-      </form>
-      <button class="btn-secondary" id="btnListar">
-        Ver Produtos Cadastrados
-      </button>
-      <div id="message" class="message"></div>
-    </div>
-  </main>
+      <div class="form-container">
+        <h2>VogueEdge</h2>
+        <form id="productForm" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required />
+          </div>
+        
+          <div class="form-group">
+            <label for="preco">Preço:</label>
+            <input type="number" id="preco" name="preco" step="0.01" required />
+          </div>
+        
+          <div class="form-group">
+            <label for="cor">Cor:</label>
+            <input type="text" id="cor" name="cor" placeholder="Ex: Azul, Vermelho" />
+          </div>
+        
+          <div class="form-group">
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" min="0" step="1" />
+          </div>
+        
+          <div class="form-group">
+            <label for="imagem">Imagem do Produto:</label>
+            <input type="file" id="imagem" name="imagem" accept="image/*" />
+          </div>
+        
+          <div class="form-group">
+            <label for="emEstoque">Em Estoque:</label>
+            <select id="emEstoque" name="emEstoque" required>
+              <option value="true">Sim</option>
+              <option value="false">Não</option>
+            </select>
+          </div>
+        
+          <!-- Descrição por último -->
+          <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" name="descricao" required />
+          </div>
+        
+          <button type="submit">Cadastrar</button>
+        </form>
+        <button class="btn-secondary" id="btnListar">
+          Ver Produtos Cadastrados
+        </button>
+        <div id="message" class="message"></div>
+      </div>
+    </main>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <!-- Esquerda -->
-      <div class="footer-left">
-        <h3>VogueEdge</h3>
-        <p>Contatos</p>
-        <div class="social-icons">
-          <a href="https://www.instagram.com/john_v.izidro/"><img src="/img/instagram (1) 1.png" alt="Instagram" /></a>
-          <a href="https://www.figma.com/design/RdHnvFwy3UhE0OMfGVjUts/Estoque-Roupas?node-id=2-57&t=CEHzGCzPo8Fu0jY4-1"><img src="/img/figma 1.png" alt="WhatsApp" /></a>
-          <a href="https://linkedin.com/in/joão-victor-izidro"><img src="/img/linkedin 1.png" alt="LinkedIn" /></a>
-          <a href="https://github.com/Johnizidro/API---cadastro"><img src="/img/github 1.png" alt="GitHub" /></a>
+    <footer class="footer">
+      <div class="footer-content">
+        <!-- Esquerda -->
+        <div class="footer-left">
+          <h3>VogueEdge</h3>
+          <p>Contatos</p>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/john_v.izidro/"><img src="/img/instagram (1) 1.png" alt="Instagram" /></a>
+            <a href="https://www.figma.com/design/RdHnvFwy3UhE0OMfGVjUts/Estoque-Roupas?node-id=2-57&t=CEHzGCzPo8Fu0jY4-1"><img src="/img/figma 1.png" alt="WhatsApp" /></a>
+            <a href="https://linkedin.com/in/joão-victor-izidro"><img src="/img/linkedin 1.png" alt="LinkedIn" /></a>
+            <a href="https://github.com/Johnizidro/API---cadastro"><img src="/img/github 1.png" alt="GitHub" /></a>
+          </div>
+        </div>
+
+        <!-- Direita -->
+        <div class="footer-right">
+          <div class="top-titles">
+            <a href="#">Políticas</a>
+            <a href="#">Termos de privacidade</a>
+          </div>
+          <div class="bottom-title">
+            <a href="#">Sobre Nós</a>
+          </div>
         </div>
       </div>
-  
-      <!-- Direita -->
-      <div class="footer-right">
-        <div class="top-titles">
-          <a href="#">Políticas</a>
-          <a href="#">Termos de privacidade</a>
-        </div>
-        <div class="bottom-title">
-          <a href="#">Sobre Nós</a>
-        </div>
+
+      <!-- Linha + texto final -->
+      <div class="footer-bottom">
+        <hr />
+        <p>© 2025 VogueEdge. Todos os direitos reservados.</p>
       </div>
-    </div>
-  
-    <!-- Linha + texto final -->
-    <div class="footer-bottom">
-      <hr>
-      <p>© 2025 VogueEdge. Todos os direitos reservados.</p>
-    </div>
-  </footer>
+    </footer>
 
     <script>
-        const form = document.getElementById("productForm");
-        const messageDiv = document.getElementById("message");
-        const btnListar = document.getElementById("btnListar");
-      
-        form.addEventListener("submit", async function (event) {
-          event.preventDefault();
-      
-          const formData = new FormData();
-      
-          formData.append("nome", document.getElementById("nome").value);
-          formData.append(
-            "preco",
-            parseFloat(document.getElementById("preco").value)
-          );
-          formData.append(
-            "descricao",
-            document.getElementById("descricao").value
-          );
-          formData.append(
-            "emEstoque",
-            document.getElementById("emEstoque").value === "true"
-          );
-      
-          const imagemInput = document.getElementById("imagem");
-          if (imagemInput.files.length > 0) {
-            formData.append("imagem", imagemInput.files[0]);
-          }
-      
-          try {
-            const response = await fetch(
-              "http://localhost:4000/produtos/cadastro",
-              {
-                method: "POST",
-                body: formData, // importante: não definir 'Content-Type' aqui
-              }
-            );
-      
-            if (response.ok) {
-              messageDiv.textContent = "Produto cadastrado com sucesso!";
-              messageDiv.style.color = "#4CAF50";
-              form.reset();
-            } else {
-              const error = await response.json();
-              messageDiv.textContent = `Erro: ${error.message}`;
-              messageDiv.style.color = "#e74c3c";
-            }
-          } catch (error) {
-            messageDiv.textContent = "Erro ao enviar os dados para a API!";
+      const form = document.getElementById("productForm");
+      const messageDiv = document.getElementById("message");
+      const btnListar = document.getElementById("btnListar");
+
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const formData = new FormData();
+
+        formData.append("nome", document.getElementById("nome").value);
+        formData.append(
+          "preco",
+          parseFloat(document.getElementById("preco").value)
+        );
+        formData.append("descricao", document.getElementById("descricao").value);
+        formData.append(
+          "emEstoque",
+          document.getElementById("emEstoque").value === "true"
+        );
+
+        // NOVOS CAMPOS
+        formData.append("cor", document.getElementById("cor").value);
+        const quantidadeVal = document.getElementById("quantidade").value;
+        if (quantidadeVal !== "") {
+          formData.append("quantidade", parseInt(quantidadeVal));
+        }
+
+        const imagemInput = document.getElementById("imagem");
+        if (imagemInput.files.length > 0) {
+          formData.append("imagem", imagemInput.files[0]);
+        }
+
+        try {
+          const response = await fetch("http://localhost:4000/produtos/cadastro", {
+            method: "POST",
+            body: formData, // importante: não definir 'Content-Type' aqui
+          });
+
+          if (response.ok) {
+            messageDiv.textContent = "Produto cadastrado com sucesso!";
+            messageDiv.style.color = "#4CAF50";
+            form.reset();
+          } else {
+            const error = await response.json();
+            messageDiv.textContent = `Erro: ${error.message}`;
             messageDiv.style.color = "#e74c3c";
           }
-        });
-      
-        btnListar.addEventListener("click", () => {
-          window.location.href = "listaPod.html";
-        });
-      </script>
+        } catch (error) {
+          messageDiv.textContent = "Erro ao enviar os dados para a API!";
+          messageDiv.style.color = "#e74c3c";
+        }
+      });
+
+      btnListar.addEventListener("click", () => {
+        window.location.href = "listaPod.html";
+      });
+    </script>
   </body>
 </html>

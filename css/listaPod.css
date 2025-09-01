@@ -158,7 +158,12 @@ h2 {
   object-fit: cover !important;
   object-position: center center !important;
 }
+/* Estilo para colocar cor e quantidade na mesma linha */
 
+/* Opcional: para deixar os labels alinhados e com largura mínima */
+.cor-quantidade strong {
+  min-width: 80px;
+}
 .header {
   width: 100%;
   padding: 0px 7%;

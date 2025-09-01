@@ -1,12 +1,11 @@
 const Produto = require("../models/produtos");
 
-
 exports.createProduto = async (req, res) => {
   try {
     console.log('Body:', req.body);
     console.log('File:', req.file);
 
-    const { nome, preco, descricao, emEstoque } = req.body;
+    const { nome, preco, descricao, emEstoque, cor, quantidade } = req.body;
 
     if (!req.file) {
       return res.status(400).json({ message: 'Imagem não enviada' });
@@ -17,6 +16,8 @@ exports.createProduto = async (req, res) => {
       preco,
       descricao,
       emEstoque,
+      cor,
+      quantidade,
       imagem: {
         data: req.file.buffer,
         contentType: req.file.mimetype
@@ -30,7 +31,6 @@ exports.createProduto = async (req, res) => {
     res.status(500).json({ erro: 'Erro ao salvar produto' });
   }
 };
-
 
 exports.getProdutos = async (req, res) => {
   try {
@@ -48,6 +48,8 @@ exports.getProdutos = async (req, res) => {
         preco: produto.preco,
         descricao: produto.descricao,
         emEstoque: produto.emEstoque,
+        cor: produto.cor,
+        quantidade: produto.quantidade,
         imagem: imagemBase64 // null se não tiver imagem
       };
     });
@@ -57,7 +59,6 @@ exports.getProdutos = async (req, res) => {
     res.status(500).json({ erro: "Erro ao buscar os produtos" });
   }
 };
-
 
 exports.getProdutoById = async (req, res) => {
   const { id } = req.params;
@@ -82,6 +83,8 @@ exports.getProdutoById = async (req, res) => {
       preco: produto.preco,
       descricao: produto.descricao,
       emEstoque: produto.emEstoque,
+      cor: produto.cor,
+      quantidade: produto.quantidade,
       imagem: imagemBase64, // null se não tiver imagem
     });
 
@@ -90,13 +93,20 @@ exports.getProdutoById = async (req, res) => {
   }
 };
 
-
 exports.updateProduto = async (req, res) => {
   const { id } = req.params;
-  const { nome, preco, descricao, emEstoque } = req.body;
+  const { nome, preco, descricao, emEstoque, cor, quantidade } = req.body;
 
   // Validar pelo menos um campo válido (considerando que emEstoque pode ser string ou boolean)
-  if (!nome && !preco && !descricao && typeof emEstoque === "undefined" && !req.file) {
+  if (
+    !nome &&
+    !preco &&
+    !descricao &&
+    typeof emEstoque === "undefined" &&
+    !cor &&
+    typeof quantidade === "undefined" &&
+    !req.file
+  ) {
     return res.status(400).json({ erro: "Pelo menos um campo deve ser enviado para atualização!" });
   }
 
@@ -111,6 +121,8 @@ exports.updateProduto = async (req, res) => {
       // emEstoque pode vir como string 'true'/'false', converte para boolean
       updateData.emEstoque = emEstoque === 'true' || emEstoque === true;
     }
+    if (cor) updateData.cor = cor;
+    if (typeof quantidade !== "undefined") updateData.quantidade = quantidade;
 
     if (req.file) {
       updateData.imagem = {
@@ -131,7 +143,6 @@ exports.updateProduto = async (req, res) => {
     res.status(500).json({ erro: "Erro ao atualizar produto" });
   }
 };
-
 
 exports.deleteProduto = async (req, res) => {
   const { id } = req.params;

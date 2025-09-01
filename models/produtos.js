@@ -5,6 +5,8 @@ const produtoSchema = new mongoose.Schema({
   preco: Number,
   descricao: String,
   emEstoque: Boolean,
+  cor: String, // <-- novo campo
+  quantidade: Number, // <-- novo campo
   imagem: {
     data: Buffer,
     contentType: String,

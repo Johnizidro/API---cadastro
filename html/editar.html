@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>VogueEdge - Editar Produto</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/editar.css" />
 </head>
 <body>
   <header class="header">
     <div class="logo-container">
-      <img src="/img/layer-MC1.png" alt="Logo VogueEdge" class="logo">
+      <img src="/img/layer-MC1.png" alt="Logo VogueEdge" class="logo" />
       <h1 class="site-title">VogueEdge</h1>
     </div>
     <nav class="header-nav">
@@ -18,46 +18,57 @@
       <a href="/html/site.html">Cadastro</a>
       <a href="/html/listaPod.html">Produtos</a>
     </nav>
-  </header> 
-<main>
-  <div class="form-container">
-    <h2>Editar Produto</h2>
-    
-    <form id="editForm" enctype="multipart/form-data">
-      <div class="form-group">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required />
-      </div>
+  </header>
+  <main>
+    <div class="form-container">
+      <h2>Editar Produto</h2>
 
-      <div class="form-group">
-        <label for="preco">Preço:</label>
-        <input type="number" id="preco" name="preco" step="0.01" required />
-      </div>
+      <form id="editForm" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required />
+        </div>
+      
+        <div class="form-group">
+          <label for="preco">Preço:</label>
+          <input type="number" id="preco" name="preco" step="0.01" required />
+        </div>
+      
+        <div class="form-group">
+          <label for="emEstoque">Em Estoque:</label>
+          <select id="emEstoque" name="emEstoque" required>
+            <option value="true">Sim</option>
+            <option value="false">Não</option>
+          </select>
+        </div>
+      
+        <div class="form-group">
+          <label for="cor">Cor:</label>
+          <input type="text" id="cor" name="cor" placeholder="Ex: Azul, Vermelho" />
+        </div>
+      
+        <div class="form-group">
+          <label for="quantidade">Quantidade:</label>
+          <input type="number" id="quantidade" name="quantidade" min="0" step="1" />
+        </div>
+      
+        <div class="form-group">
+          <label for="imagem">Imagem (opcional):</label>
+          <input type="file" id="imagem" name="imagem" accept="image/*" />
+        </div>
+      
+        <!-- Descrição por último -->
+        <div class="form-group">
+          <label for="descricao">Descrição:</label>
+          <input type="text" id="descricao" name="descricao" required />
+        </div>
+      
+        <button type="submit">Salvar Alterações</button>
+      </form>
 
-      <div class="form-group">
-        <label for="descricao">Descrição:</label>
-        <input type="text" id="descricao" name="descricao" required />
-      </div>
-
-      <div class="form-group">
-        <label for="emEstoque">Em Estoque:</label>
-        <select id="emEstoque" name="emEstoque" required>
-          <option value="true">Sim</option>
-          <option value="false">Não</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="imagem">Imagem (opcional):</label>
-        <input type="file" id="imagem" name="imagem" accept="image/*" />
-      </div>
-
-      <button type="submit">Salvar Alterações</button>
-    </form>
-
-    <div id="message" class="message"></div>
-  </div>
-</main>  
+      <div id="message" class="message"></div>
+    </div>
+  </main>
 
   <footer class="footer">
     <div class="footer-content">
@@ -72,7 +83,7 @@
           <a href="https://github.com/Johnizidro/API---cadastro"><img src="/img/github 1.png" alt="GitHub" /></a>
         </div>
       </div>
-  
+
       <!-- Direita -->
       <div class="footer-right">
         <div class="top-titles">
@@ -84,10 +95,10 @@
         </div>
       </div>
     </div>
-  
+
     <!-- Linha + texto final -->
     <div class="footer-bottom">
-      <hr>
+      <hr />
       <p>© 2025 VogueEdge. Todos os direitos reservados.</p>
     </div>
   </footer>
@@ -109,6 +120,10 @@
         form.preco.value = produto.preco;
         form.descricao.value = produto.descricao;
         form.emEstoque.value = produto.emEstoque.toString();
+
+        // Preencher novos campos
+        form.cor.value = produto.cor || '';
+        form.quantidade.value = produto.quantidade !== undefined ? produto.quantidade : '';
       } catch (error) {
         messageDiv.textContent = error.message;
         messageDiv.style.color = '#e74c3c';
@@ -123,6 +138,12 @@
       formData.append("preco", form.preco.value);
       formData.append("descricao", form.descricao.value);
       formData.append("emEstoque", form.emEstoque.value);
+
+      // Novos campos
+      formData.append("cor", form.cor.value);
+      if (form.quantidade.value !== '') {
+        formData.append("quantidade", parseInt(form.quantidade.value));
+      }
 
       const imagemFile = form.imagem.files[0];
       if (imagemFile) {

@@ -9,7 +9,7 @@
   <body>
     <header class="header">
       <div class="logo-container">
-        <img src="/img/layer-MC1.png" alt="Logo VogueEdge" class="logo">
+        <img src="/img/layer-MC1.png" alt="Logo VogueEdge" class="logo" />
         <h1 class="site-title">VogueEdge</h1>
       </div>
       <nav class="header-nav">
@@ -18,8 +18,6 @@
         <a href="/html/listaPod.html">Produtos</a>
       </nav>
     </header>
-    
-  
 
     <section class="product-section">
       <h2 class="product-title">Lista de Produtos</h2>
@@ -27,109 +25,122 @@
     </section>
 
     <p id="loadingMessage" class="loading-message">Carregando produtos...</p>
-<div class="product-list" id="productList"></div>
+    <div class="product-list" id="productList"></div>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <!-- Esquerda -->
-      <div class="footer-left">
-        <h3>VogueEdge</h3>
-        <p>Contatos</p>
-        <div class="social-icons">
-          <a href="https://www.instagram.com/john_v.izidro/"><img src="/img/instagram (1) 1.png" alt="Instagram" /></a>
-          <a href="https://www.figma.com/design/RdHnvFwy3UhE0OMfGVjUts/Estoque-Roupas?node-id=2-57&t=CEHzGCzPo8Fu0jY4-1"><img src="/img/figma 1.png" alt="WhatsApp" /></a>
-          <a href="https://linkedin.com/in/joão-victor-izidro"><img src="/img/linkedin 1.png" alt="LinkedIn" /></a>
-          <a href="https://github.com/Johnizidro/API---cadastro"><img src="/img/github 1.png" alt="GitHub" /></a>
+    <footer class="footer">
+      <div class="footer-content">
+        <!-- Esquerda -->
+        <div class="footer-left">
+          <h3>VogueEdge</h3>
+          <p>Contatos</p>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/john_v.izidro/"
+              ><img src="/img/instagram (1) 1.png" alt="Instagram" />
+            </a>
+            <a
+              href="https://www.figma.com/design/RdHnvFwy3UhE0OMfGVjUts/Estoque-Roupas?node-id=2-57&t=CEHzGCzPo8Fu0jY4-1"
+              ><img src="/img/figma 1.png" alt="WhatsApp" />
+            </a>
+            <a href="https://linkedin.com/in/joão-victor-izidro"
+              ><img src="/img/linkedin 1.png" alt="LinkedIn" />
+            </a>
+            <a href="https://github.com/Johnizidro/API---cadastro"
+              ><img src="/img/github 1.png" alt="GitHub" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Direita -->
+        <div class="footer-right">
+          <div class="top-titles">
+            <a href="#">Políticas</a>
+            <a href="#">Termos de privacidade</a>
+          </div>
+          <div class="bottom-title">
+            <a href="#">Sobre Nós</a>
+          </div>
         </div>
       </div>
-  
-      <!-- Direita -->
-      <div class="footer-right">
-        <div class="top-titles">
-          <a href="#">Políticas</a>
-          <a href="#">Termos de privacidade</a>
-        </div>
-        <div class="bottom-title">
-          <a href="#">Sobre Nós</a>
-        </div>
-      </div>
-    </div>
-  
-    <!-- Linha + texto final -->
-    <div class="footer-bottom">
-      <hr>
-      <p>© 2025 VogueEdge. Todos os direitos reservados.</p>
-    </div>
-  </footer>
 
-  <script>
-    const listUrl = "http://localhost:4000/produtos/consulta"; // para listar
-    const deleteUrl = "http://localhost:4000/produtos/deletar"; // para deletar
-  
-    async function fetchProdutos() {
-      const container = document.getElementById("productList");
-      const loadingMessage = document.getElementById("loadingMessage");
-  
-      // Mostra a mensagem de carregamento
-      loadingMessage.style.display = "block";
-      container.innerHTML = "";
-  
-      try {
-        const res = await fetch(listUrl);
-        const produtos = await res.json();
-  
-        produtos.forEach((prod) => {
-          const imgSrc = prod.imagem || "https://via.placeholder.com/150";
-  
-          const div = document.createElement("div");
-          div.className = "product-item";
-          div.innerHTML = `
-            <div class="product-image">
-              <img src="${imgSrc}" alt="Imagem de ${prod.nome}" />
-            </div>
-            <div class="product-content">
-              <div class="product-text">
-                <h3>${prod.nome}</h3>
-                <p><strong>Preço:</strong> R$ ${prod.preco.toFixed(2)}</p>
-                <p><strong>Descrição:</strong> ${prod.descricao}</p>
-                <p><strong>Em Estoque:</strong> ${prod.emEstoque ? "Sim" : "Não"}</p>
-              </div>
-              <div class="actions">
-                <button onclick="editarProduto('${prod._id}')">Editar</button>
-                <button onclick="deletarProduto('${prod._id}')">Excluir</button>
-              </div>
-            </div>
-          `;
-          container.appendChild(div);
-        });
-      } catch (error) {
-        container.innerHTML = `<p style="color: red; text-align: center;">Erro ao carregar produtos.</p>`;
-      } finally {
-        // Esconde a mensagem de carregamento
-        loadingMessage.style.display = "none";
-      }
-    }
-  
-    function editarProduto(id) {
-      window.location.href = `editar.html?id=${id}`;
-    }
-  
-    async function deletarProduto(id) {
-      if (confirm("Tem certeza que deseja excluir este produto?")) {
-        const res = await fetch(`${deleteUrl}/${id}`, {
-          method: "DELETE",
-        });
-  
-        if (res.status === 204) {
-          alert("Produto excluído com sucesso.");
-          fetchProdutos(); // Atualiza a lista
-        } else {
-          alert("Erro ao excluir produto.");
+      <!-- Linha + texto final -->
+      <div class="footer-bottom">
+        <hr />
+        <p>© 2025 VogueEdge. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <script>
+      const listUrl = "http://localhost:4000/produtos/consulta"; // para listar
+      const deleteUrl = "http://localhost:4000/produtos/deletar"; // para deletar
+
+      async function fetchProdutos() {
+        const container = document.getElementById("productList");
+        const loadingMessage = document.getElementById("loadingMessage");
+
+        // Mostra a mensagem de carregamento
+        loadingMessage.style.display = "block";
+        container.innerHTML = "";
+
+        try {
+          const res = await fetch(listUrl);
+          const produtos = await res.json();
+
+          produtos.forEach((prod) => {
+            const imgSrc = prod.imagem || "https://via.placeholder.com/150";
+
+            const div = document.createElement("div");
+            div.className = "product-item";
+            div.innerHTML = `
+  <div class="product-image">
+    <img src="${imgSrc}" alt="Imagem de ${prod.nome}" />
+  </div>
+  <div class="product-content">
+    <div class="product-text">
+      <h3>${prod.nome}</h3>
+      <p><strong>Preço:</strong> R$ ${prod.preco.toFixed(2)}</p>
+      <p><strong>Cor:</strong> ${prod.cor || "Não informado"}</p>
+      <p><strong>Quantidade:</strong> ${
+        prod.quantidade != null ? prod.quantidade : "Não informado"
+      }</p>
+      <p><strong>Em Estoque:</strong> ${prod.emEstoque ? "Sim" : "Não"}</p>
+      <p><strong>Descrição:</strong> ${prod.descricao}</p>
+    </div>
+    <div class="actions">
+      <button onclick="editarProduto('${prod._id}')">Editar</button>
+      <button onclick="deletarProduto('${prod._id}')">Excluir</button>
+    </div>
+  </div>
+`;
+            container.appendChild(div);
+          });
+        } catch (error) {
+          container.innerHTML = `<p style="color: red; text-align: center;">Erro ao carregar produtos.</p>`;
+        } finally {
+          // Esconde a mensagem de carregamento
+          loadingMessage.style.display = "none";
         }
       }
-    }
-  
-    fetchProdutos();
-  </script>
+
+      function editarProduto(id) {
+        window.location.href = `editar.html?id=${id}`;
+      }
+
+      async function deletarProduto(id) {
+        if (confirm("Tem certeza que deseja excluir este produto?")) {
+          const res = await fetch(`${deleteUrl}/${id}`, {
+            method: "DELETE",
+          });
+
+          if (res.status === 204) {
+            alert("Produto excluído com sucesso.");
+            fetchProdutos(); // Atualiza a lista
+          } else {
+            alert("Erro ao excluir produto.");
+          }
+        }
+      }
+
+      fetchProdutos();
+    </script>
   </body>
 </html>
